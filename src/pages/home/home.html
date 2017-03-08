@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Tic Tac Toe
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="setBackground">
+  {{ game.player1.name | firstletterlarge }}: {{ game.player1.score }} points<br>
+  {{ game.player2.name | firstletterlarge }}: {{ game.player2.score }} points<br>
+<table border="0" id="Board">
+<tr>
+  <td class="{{ game.board.tiles[0][2] }} tile" block (click)="getClick(0,2)"><img class="piece" src="{{ game.board.tiles[0][2] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[0][1] }} tile" block (click)="getClick(0,1)"><img class="piece" src="{{ game.board.tiles[0][1] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[0][0] }} tile" block (click)="getClick(0,0)"><img class="piece" src="{{ game.board.tiles[0][0] | generateimage}}"></td>
+</tr>
+<tr>
+  <td class="{{ game.board.tiles[1][2] }} tile" block (click)="getClick(1,2)"><img class="piece" src="{{ game.board.tiles[1][2] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[1][1] }} tile" block (click)="getClick(1,1)"><img class="piece" src="{{ game.board.tiles[1][1] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[1][0] }} tile" block (click)="getClick(1,0)"><img class="piece" src="{{ game.board.tiles[1][0] | generateimage}}"></td>
+</tr>
+<tr>
+  <td class="{{ game.board.tiles[2][2] }} tile" block (click)="getClick(2,2)"><img class="piece" src="{{ game.board.tiles[2][2] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[2][1] }} tile" block (click)="getClick(2,1)"><img class="piece" src="{{ game.board.tiles[2][1] | generateimage}}"></td>
+  <td class="{{ game.board.tiles[2][0] }} tile" block (click)="getClick(2,0)"><img class="piece" src="{{ game.board.tiles[2][0] | generateimage}}"></td>
+</tr>
+</table>
+<div style="position: absolute;top: 50px;width: 276px;height: 256.8px;" *ngIf="game.playerHasWon"><img src="assets/{{ game.winnerPlacement }}.png"></div>
+<button ion-button (click)="game.clearBoard()" *ngIf="game.playerHasWon">Reset</button>
+</ion-content>
